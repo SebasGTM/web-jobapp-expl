@@ -1,0 +1,7 @@
+<h1>JOB LIST</h1>
+
+<ul>
+    {% for job in joblist %}
+    <li><a href="{% url 'job_detail' job.id %}"> {{ job.id }} - {{ job.title }}</a><p>{{ job.description }}</p></li>
+    {% endfor %}
+</ul>

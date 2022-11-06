@@ -1,0 +1,18 @@
+<h1>Hello</h1>
+{{name|capfirst}}
+<p>Age: {{age|add:2}}</p>
+{% if is_auth %}
+<p>Authenticated!</p>
+{% endif %}
+<p>Sections:</p>
+{% for item in sections %}
+<p>{{item}}</p>
+{% endfor %}
+
+<h1>Filters</h1>
+{{ sections|length }}
+
+{% comment "sections" %}
+use my sections to do everything!!
+HAH
+{% endcomment %}
