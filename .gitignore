@@ -8,6 +8,8 @@
 [Ss]cripts
 pyvenv.cfg
 .venv
+env
 pip-selfcheck.json
 *.sqlite3
 __pycache__
+.env
