@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.template import loader
 
+from mainapp.models import JobPost
+
 
 # Create your views here.
 
@@ -29,24 +31,16 @@ def hello(request):
     # return HttpResponse(template.render(context, request))
 
 def job_list(request): 
-    # ret_html = "<ul>"
-    # for i in range(len(job_title)):
-    #     job_url = reverse("job_detail", args=(i,))
-    #     ret_html += f"<li><a href='{job_url}'>{i} - {job_title[i]}<a><p>{job_desc[i]}<p></li>"
-
-    # ret_html += "<ul>"
-    job_list = []
-    for idx in range(len(job_title)):
-        job_list.append({ "id":idx, "title":job_title[idx], "description": job_desc[idx] })
-
+    jobs = JobPost.objects.all()
     context = {
-        "joblist" : job_list
+        "joblist" : jobs
     }
 
     return render(request, "mainapp/job_list.html", context)
 
 
 def job_detail(request, id):
-    context = { "id":id, "job_title":job_title[id], "job_desc":job_desc[id] }
+    job = JobPost.objects.get(id=id)
+    context = { "job": job }
 
     return render(request, "mainapp/job_detail.html", context)
